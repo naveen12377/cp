@@ -1,0 +1,4 @@
+import math
+class Solution:
+    def findGCD(self, n: List[int]) -> int:
+        return math.gcd(min(n),max(n))
