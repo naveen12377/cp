@@ -1,0 +1,9 @@
+class Solution:
+    def check(self, n: List[int]) -> bool:
+        p=n[0]
+        for i in range(1,len(n)):
+            if n[i]>=p:
+                p=n[i]
+            else:
+                return n[i:]+n[:i]==sorted(n)
+        return True
