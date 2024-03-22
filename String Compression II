@@ -1,0 +1,34 @@
+class Solution:
+    def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
+        n = len(s)
+        dp = [[101] * (k + 1) for _ in range(n)]
+
+        def dfs(i, k):
+            nonlocal s, n, dp
+            if i + k >= n:
+                return 0
+            if k < 0:
+                return 101
+            if dp[i][k] != 101:
+                return dp[i][k]
+
+            res = dfs(i + 1, k - 1) # Skip this character
+            diff, same, length = 0, 0, 0
+
+            # For all continuous s[i] characters (can skip k characters)
+            for j in range(i, n):
+                if k - diff < 0:
+                    break
+                if s[i] == s[j]:
+                    same += 1
+                    if same <= 2 or same == 10 or same == 100:
+                        length += 1
+                else:
+                    diff += 1
+                res = min(res, length + dfs(j + 1, k - diff))
+
+            dp[i][k] = res
+            return res
+
+        return dfs(0, k)
+        
