@@ -1,0 +1,9 @@
+from collections import Counter
+from itertools import chain
+class Solution:
+    def makeEqual(self, w: List[str]) -> bool:
+        r=Counter(chain(*w))
+        l=len(w)
+        for k,v in r.items():
+            if v%l!=0:return False
+        return True
