@@ -1,0 +1,22 @@
+class Solution:
+    def threeSum(self, n: List[int]) -> List[List[int]]:
+        t=0
+        n.sort()
+        s=set()
+        r=[]
+        for i in range(len(n)):
+            j=i+1
+            k=len(n)-1
+            while j<k:
+                sum=n[i]+n[j]+n[k]
+                if sum==t:
+                    s.add((n[i],n[j],n[k]))
+                    j+=1
+                    k-=1
+                elif sum<t:
+                    j+=1
+                else:
+                    k-=1
+        r=list(s)
+        return r
+    
