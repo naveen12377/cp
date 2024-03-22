@@ -1,0 +1,10 @@
+class Solution:
+    def findMatrix(self, n: List[int]) -> List[List[int]]:
+        r=[]
+        while n:
+            row=list(set(n))
+            for i in row:
+                n.remove(i)
+            r.append(row)
+        return r
+   
