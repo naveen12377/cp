@@ -1,0 +1,10 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        m=len(p)
+        p_v=Counter(p)
+        r=[]
+        for i in range(len(s)-m+1):
+            if Counter(s[i:i+m])==p_v:
+                r.append(i)
+        return r
+     
