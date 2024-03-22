@@ -1,0 +1,12 @@
+from collections import Counter
+class Solution:
+    def minOperations(self, n: List[int]) -> int:
+        m=Counter(n)
+        c=0
+        for t in m.values():
+            if t==1:
+                return -1
+            c+=t//3
+            if t%3:
+                c+=1
+        return c
